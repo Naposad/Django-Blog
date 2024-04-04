@@ -32,7 +32,7 @@ class BlogPostUpdate(UpdateView):
     model = BlogPost
     template_name = "posts/blogpost_editer.html"
     fields = ['title', 'content', 'published',]
-@method_decorator(login_required, name="dispatch")
+
 class BlogPostDetail(DetailView):
     model = BlogPost
     context_object_name = "post"
