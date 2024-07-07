@@ -1,20 +1,24 @@
 
-{% extends 'base.html' %}
+{% extends 'base1.html' %}
 
 {% block title %}
     <title>Acceill du blog</title>
 {% endblock %}
 
-
+<h1>le blog de sad</h1>
 {% block content %}
-    <h1>le blog de sad</h1>
 
     {% for post in posts %}
-        <article>
+        <article class="article">
             <div class="post-title">
-                <h2>{{post.title.lower}}</h2>
-                {% if request.user.is_authenticated %}
-                <div >
+                {% if post.image %}
+                <div class="image" >
+                    <img src="{{ post.image.url }}" alt="image de l' article" " >
+                </div>
+                {% endif %}
+                <h2>{{post.title.capitalize}}</h2>
+                {% if request.user.is_staff %}
+                <div class="modifier">
                     <a href="{% url 'posts:edit' slug=post.slug%}">Editer</a>
                     <a href="{% url 'posts:delete' slug=post.slug%}">Supprimer</a>
                 </div>
@@ -22,9 +26,18 @@
             </div>
             <h5>Publié par <i>{{post.author_or_default}}</i> le {{post.created_on|date }}</h5>
             <p>{{post.content|safe|truncatewords:50}}</p>
-            <form action="{% url 'posts:detail' slug=post.slug %}">
+            <form action="{% url 'posts:detail' slug=post.slug %}" class="bt">
                 <button class="btn btn-submit" >Lire l'article</button>
             </form>
         </article>
     {% endfor %}
+<!--
+         <section class="next-page">
+            <button><a href="{% url 'posts:home-list' %}">Previous</a></button>
+
+             <form action="{% url 'posts:home-list' %}" >
+               <button>Next</button>
+            </form>
+        </section>
+-->
 {% endblock %}

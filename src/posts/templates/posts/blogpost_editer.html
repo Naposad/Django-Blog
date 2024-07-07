@@ -1,15 +1,21 @@
-{% extends 'base.html' %}
+{% extends 'base1.html' %}
 
 
 {% block title %}
     <title>Editer un article</title>
 {% endblock %}
 
+ {% block titleA %}
+    <p> <h1>Editer un article : </h1><br></p><br><br>
+ {% endblock %}
+
 {% block content %}
-    <h1>Editer un article</h1>
+
     <form method="POST">
         {% csrf_token %}
-        {{form}}
-        <input type="submit" value="éditer">
+        <table>
+            {{form.as_table}}<br><br><br><br>
+        </table>
+        <input type="submit" value="Editer">
     </form>
 {% endblock %}

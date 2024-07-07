@@ -33,14 +33,14 @@ nav {
     width:60% ;
     margin-top: 2rem;
 }
-
+/*
 @media (max-width:1024)
 {
     #blog article
     {
         width:85%;
     }
-}
+}*/
 
 .post-title
 {
@@ -130,3 +130,7 @@ label
     width:100px;
 }
 
+.image img
+{
+
+}

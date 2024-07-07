@@ -1,5 +1,5 @@
 
-{% extends 'base.html' %}
+{% extends 'base1.html' %}
 
 {% block title %}
     <title>{{post.title}}</title>
@@ -7,7 +7,6 @@
 
 
 {% block content %}
-    <h1>le blog de sad</h1>
         <article class="post-detail">
             <h2>{{post.title.lower}}</h2>
             {% if post.image %}

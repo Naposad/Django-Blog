@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base1.html' %}
 <!DOCTYPE html>
 <html lang="fr-FR" xmlns="http://www.w3.org/1999/html">
 <head>
@@ -8,13 +8,15 @@
     {% endblock %}
 </head>
 <body>
-    <form method="POST">
-        {% block content%}
+{% block content%}
+    <form method="POST" class="RmForm">
+
         {% csrf_token %}
-        <p>Etes-vous sur de vouloir suprimer "{{post.title}}"</p>
+        <p>Etes-vous sur de vouloir suprimer "{{post.title}}"</p><br><br>
         <input type="submit" value="Supprimer" class="btn-delete">
-        {% endblock%}
+
     </form>
+{% endblock%}
 
 </body>
 </html>

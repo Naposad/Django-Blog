@@ -14,7 +14,7 @@ class BlogPost(models.Model):
     created_on = models.DateField(blank=True, null=True)
     published = models.BooleanField(default=False, verbose_name="Publié")
     content = models.TextField(blank=True, verbose_name="Contenu")
-    image = models.ImageField(blank=True, upload_to="blog")
+    image = models.ImageField(blank=True, upload_to="blog", default="{% static 'css/gettyimages-1986209604-594x594.jpg' %}")
 
 
     class Meta:
@@ -27,6 +27,8 @@ class BlogPost(models.Model):
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
+        if not self.image:
+            self.image = "{% static 'css/gettyimages-1986209604-594x594.jpg' %}"
         super().save(*args, **kwargs)
 
     def author_or_default(self):
